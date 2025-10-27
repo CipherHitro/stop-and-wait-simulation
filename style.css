@@ -8,7 +8,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
     min-height: 100vh;
     padding: 20px;
 }
@@ -16,7 +16,7 @@ body {
 .container {
     max-width: 1300px;
     margin: 0 auto;
-    background: white;
+    background: #ffffff;
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -24,35 +24,35 @@ body {
 
 h1 {
     text-align: center;
-    color: #667eea;
+    color: #0d9488;
     margin-bottom: 10px;
     font-size: 2em;
 }
 
 .subtitle {
     text-align: center;
-    color: #666;
+    color: #64748b;
     margin-bottom: 30px;
     font-size: 0.9em;
 }
 
 .info-box {
-    background: linear-gradient(135deg, #e0f2fe, #dbeafe);
-    border-left: 4px solid #3b82f6;
+    background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+    border-left: 4px solid #10b981;
     padding: 15px 20px;
     border-radius: 8px;
     margin-bottom: 25px;
-    color: #1e40af;
+    color: #065f46;
     font-size: 0.9em;
     line-height: 1.6;
 }
 
 .info-box strong {
-    color: #1e3a8a;
+    color: #047857;
 }
 
 .info-box small {
-    color: #b45309;
+    color: #ea580c;
     font-weight: 500;
 }
 
@@ -62,7 +62,7 @@ h1 {
     gap: 15px;
     margin-bottom: 30px;
     padding: 20px;
-    background: #f8f9fa;
+    background: #f1f5f9;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
@@ -75,13 +75,13 @@ h1 {
 label {
     font-weight: 600;
     margin-bottom: 5px;
-    color: #333;
+    color: #1e293b;
     font-size: 0.9em;
 }
 
 input[type="text"], input[type="number"] {
     padding: 10px;
-    border: 2px solid #ddd;
+    border: 2px solid #cbd5e1;
     border-radius: 8px;
     font-size: 1em;
     transition: all 0.3s;
@@ -89,8 +89,8 @@ input[type="text"], input[type="number"] {
 
 input:focus {
     outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: #14b8a6;
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
 }
 
 input[type="number"]:invalid {
@@ -117,22 +117,22 @@ button {
 }
 
 .btn-start {
-    background: #10b981;
+    background: #14b8a6;
     color: white;
 }
 
 .btn-start:hover {
-    background: #059669;
+    background: #0d9488;
     transform: translateY(-2px);
 }
 
 .btn-stop {
-    background: #ef4444;
+    background: #f43f5e;
     color: white;
 }
 
 .btn-stop:hover {
-    background: #dc2626;
+    background: #e11d48;
     transform: translateY(-2px);
 }
 
@@ -158,7 +158,7 @@ button:disabled {
     align-items: center;
     margin-bottom: 30px;
     padding: 40px 20px;
-    background: linear-gradient(to right, #e0f2fe, #fce7f3);
+    background: linear-gradient(to right, #ccfbf1, #dbeafe);
     border-radius: 15px;
     min-height: 200px;
     position: relative;
@@ -180,12 +180,12 @@ button:disabled {
 }
 
 .sender {
-    background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    background: linear-gradient(135deg, #2dd4bf, #14b8a6);
     color: white;
 }
 
 .receiver {
-    background: linear-gradient(135deg, #34d399, #10b981);
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
     color: white;
 }
 
@@ -219,19 +219,19 @@ button:disabled {
 }
 
 .frame-forward {
-    background: #3b82f6;
+    background: #14b8a6;
     color: white;
     top: -20px;
 }
 
 .frame-backward {
-    background: #10b981;
+    background: #3b82f6;
     color: white;
     top: 30px;
 }
 
 .frame-lost {
-    background: #ef4444;
+    background: #f43f5e;
     color: white;
     animation: frameLost 1s ease-out forwards;
 }
@@ -271,7 +271,7 @@ button:disabled {
 
 .stat-card {
     padding: 15px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #0d9488, #0891b2);
     border-radius: 10px;
     color: white;
     text-align: center;
@@ -296,7 +296,7 @@ button:disabled {
 }
 
 .log {
-    background: #1e293b;
+    background: #0f172a;
     border-radius: 10px;
     padding: 20px;
     height: 300px;
@@ -313,13 +313,13 @@ button:disabled {
 }
 
 .log-sent {
-    color: #60a5fa;
-    border-color: #60a5fa;
+    color: #5eead4;
+    border-color: #5eead4;
 }
 
 .log-received {
-    color: #34d399;
-    border-color: #34d399;
+    color: #60a5fa;
+    border-color: #60a5fa;
 }
 
 .log-ack {
@@ -328,18 +328,18 @@ button:disabled {
 }
 
 .log-error {
-    color: #f87171;
-    border-color: #f87171;
+    color: #fda4af;
+    border-color: #fda4af;
 }
 
 .log-timeout {
-    color: #fbbf24;
-    border-color: #fbbf24;
+    color: #fcd34d;
+    border-color: #fcd34d;
 }
 
 .log-success {
-    color: #4ade80;
-    border-color: #4ade80;
+    color: #6ee7b7;
+    border-color: #6ee7b7;
 }
 
 .status-indicator {
@@ -352,7 +352,7 @@ button:disabled {
 }
 
 .status-active {
-    background: #10b981;
+    background: #14b8a6;
 }
 
 .status-waiting {
@@ -362,4 +362,59 @@ button:disabled {
 @keyframes pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.5; }
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+        border-radius: 16px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    .controls {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+    
+    .stats {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 12px;
+    }
+    
+    .stat-card {
+        padding: 12px;
+    }
+    
+    .stat-value {
+        font-size: 1.8em;
+    }
+    
+    .simulation-area {
+        flex-direction: column;
+        gap: 30px;
+        padding: 30px 20px;
+    }
+    
+    .channel {
+        width: 100%;
+        height: 100px;
+        margin: 0;
+    }
+    
+    .node {
+        width: 110px;
+        height: 110px;
+    }
+    
+    .buttons {
+        gap: 10px;
+    }
+    
+    button {
+        padding: 12px 24px;
+        font-size: 0.85em;
+    }
 }
