@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop-and-Wait Protocol Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Stop-and-Wait ARQ Protocol Simulator</h1>
+        <p class="subtitle">Simulating reliable data transfer with flow control and error handling</p>
+        
+        <!-- <div class="info-box">
+            <strong>ℹ️ Features:</strong> Frame Loss, Corruption, ACK Loss, Duplicate Detection, Automatic Retransmission
+            <br>
+            <small>⚠️ Note: Probabilities are capped at 70% to ensure meaningful transmission simulation</small>
+        </div> -->
+
+        <div class="controls">
+            <div class="control-group">
+                <label>Data to Send:</label>
+                <input type="text" id="dataInput" value="HELLO WORLD" placeholder="Enter data">
+            </div>
+            <div class="control-group">
+                <label>Frame Loss Probability(%):</label>
+                <input type="number" id="lossProb" value="20" min="0" max="70" 
+                       title="Maximum 70% to ensure meaningful transmission">
+            </div>
+            <div class="control-group">
+                <label>Corruption Probability(%):</label>
+                <input type="number" id="corruptProb" value="15" min="0" max="70"
+                       title="Maximum 70% to ensure meaningful transmission">
+            </div>
+            <div class="control-group">
+                <label>ACK Loss Probability(%):</label>
+                <input type="number" id="ackLossProb" value="15" min="0" max="70"
+                       title="Maximum 70% to ensure meaningful transmission">
+            </div>
+            <div class="control-group">
+                <label>Timeout (ms):</label>
+                <input type="number" id="timeout" value="3000" min="1000" max="10000" step="500">
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button class="btn-start" id="startBtn" onclick="startTransmission()">Start Transmission</button>
+            <button class="btn-stop" id="stopBtn" onclick="stopTransmission()" disabled>Stop</button>
+            <button class="btn-reset" onclick="resetSimulation()">Reset</button>
+        </div>
+
+        <div class="simulation-area">
+            <div class="node sender">
+                <div>SENDER</div>
+                <span id="senderStatus" class="status-indicator"></span>
+            </div>
+            <div class="channel">
+                <div class="frame-container" id="frameContainer"></div>
+            </div>
+            <div class="node receiver">
+                <div>RECEIVER</div>
+                <span id="receiverStatus" class="status-indicator"></span>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value" id="framesSent">0</div>
+                <div class="stat-label">Frames Sent</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="framesReceived">0</div>
+                <div class="stat-label">Frames Received</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="framesLost">0</div>
+                <div class="stat-label">Frames Lost</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="framesCorrupted">0</div>
+                <div class="stat-label">Frames Corrupted</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="acksLost">0</div>
+                <div class="stat-label">ACKs Lost</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="duplicatesDiscarded">0</div>
+                <div class="stat-label">Duplicates Discarded</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="retransmissions">0</div>
+                <div class="stat-label">Retransmissions</div>
+            </div>
+            <!-- <div class="stat-card">
+                <div class="stat-value" id="totalTime">0s</div>
+                <div class="stat-label">Total Time</div>
+            </div> -->
+        </div>
+
+        <h3 style="margin-bottom: 15px; color: #667eea;">Transmission Log</h3>
+        <div class="log" id="log"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
