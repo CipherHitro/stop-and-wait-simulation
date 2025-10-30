@@ -1,5 +1,3 @@
-// cript.js
-
 let frames = [];
 let currentFrameIndex = 0;
 let expectedSeqNum = 0;
@@ -15,6 +13,7 @@ let stats = {
     retransmissions: 0
 };
 let startTime = 0;
+let receivedData = [];
 
 function initializeFrames() {
     const data = document.getElementById('dataInput').value || 'HELLO';
@@ -25,6 +24,7 @@ function initializeFrames() {
     }));
     currentFrameIndex = 0;
     expectedSeqNum = 0;
+    receivedData = [];
 }
 
 function startTransmission() {
@@ -125,20 +125,21 @@ function receiveFrame(frame, corrupted) {
     
     if (corrupted) {
         addLog(`NAK sent for Frame ${frame.seqNum}`, 'log-error');
-        sendAck(frame.seqNum, true);
+        sendAck(expectedSeqNum, true); // send NAK for next expected seq num
     } else {
         if (frame.seqNum === expectedSeqNum) {
             stats.received++;
             updateStats();
             addLog(`✓ Frame ${frame.seqNum} received successfully [Data: '${frame.data}']`, 'log-received');
+            receivedData.push(frame.data);
             expectedSeqNum = 1 - expectedSeqNum;
-            sendAck(frame.seqNum, false);
+            sendAck(expectedSeqNum, false); // send ACK for next expected seq num
         } else {
             stats.duplicatesDiscarded++;
             updateStats();
             addLog(`⚠ Duplicate Frame ${frame.seqNum} detected, discarding`, 'log-error');
-            addLog(`Sending ACK ${1 - frame.seqNum} for previously received frame`, 'log-ack');
-            sendAck(1 - frame.seqNum, false);
+            addLog(`Sending ACK ${expectedSeqNum} for next expected frame`, 'log-ack');
+            sendAck(expectedSeqNum, false); // send ACK for next expected seq num (not 1 - frame.seqNum)
         }
     }
 }
@@ -228,6 +229,13 @@ function completeTransmission() {
     addLog(`✓ Transmission completed successfully! All ${frames.length} frames delivered.`, 'log-success');
     addLog(`📊 Summary: ${stats.retransmissions} retransmissions, ${stats.duplicatesDiscarded} duplicates discarded`, 'log-success');
     addLog(`📊 Losses: ${stats.lost} frames, ${stats.acksLost} ACKs, ${stats.corrupted} corrupted`, 'log-success');
+    
+    if (receivedData.length === frames.length) {
+        addLog('✅ All frames were received correctly!', 'log-success');
+    } else {
+        addLog('⚠ Not all frames were correctly received.', 'log-error');
+    }
+    addLog(`Received Data: "${receivedData.join('')}"`, 'log-received');
 }
 
 function corruptData(data) {
